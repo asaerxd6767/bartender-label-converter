@@ -13,18 +13,18 @@ def parse_btw_file(file_path: str) -> dict:
         content = f.read().decode('latin-1', errors='ignore')
 
     return {
-        "product_name": extract_pattern(r"(?:Product description:\s*)?((?:FROZEN|ORGANIC)[^\x00\r\n]+)", content, "FROZEN MANGO DICED 10x10 MM"),
-        "ingredients": extract_pattern(r"INGREDIENTS:\s*([^\x00\r\n]+)", content, "MANGO FRUIT"),
-        "usage_notice": extract_pattern(r"(FOR MANUFACTURING[^\x00\r\n]+)", content, "FOR MANUFACTURING & CATERING USE"),
-        "net_weight": extract_pattern(r"Net weight:\s*([^\x00\r\n]+)", content, "10 Kg"),
-        "gross_weight": extract_pattern(r"Gross[ -]Weight:\s*([^\x00\r\n]+)", content, "10.5 kg"),
-        "origin": extract_pattern(r"ORIGIN:\s*([^\x00\r\n]+)", content, "EGYPT"),
-        "exporter": extract_pattern(r"Exporter Name:\s*([^\x00\r\n]+)", content, "EGY-BERRIES WHOLESALE & RETAILS TRADE"),
-        "importer": extract_pattern(r"Importer:\s*([^\x00\r\n]+)", content, "Al Taam foodstuff Ind Sole Proprietorship LLC"),
-        "importer_address": extract_pattern(r"(Sharjah[^\x00\r\n]+)", content, "Sharjah ,B.O.37233,United Arab Emirates"),
-        "importer_tel": extract_pattern(r"Tel:\s*([^\x00\r\n]+)", content, "00971552340311"),
-        "production_date": extract_pattern(r"PRODUCTION DATE\s*:\s*([^\x00\r\n]+)", content, "01/08/2026"),
-        "expiry_date": extract_pattern(r"EXPIRY DATE\s*:\s*([^\x00\r\n]+)", content, "01/08/2028"),
-        "storage": extract_pattern(r"STORAGE\s*:\s*([^\x00\r\n]+)", content, "DRY AND COOL CONDITIONS (- 18 °C)"),
-        "lot_code": extract_pattern(r"LOT CODE:\s*([A-Za-z0-9/\-]+)", content, "01080017M26/S")
+        "product_name": extract_pattern(r"(?:Product description:\s*)?((?:FROZEN|ORGANIC)[^\x00\r\n]+)", content, "FROZEN BLUEBERRY CUBES 42x42 MM"),
+        "ingredients": extract_pattern(r"INGREDIENTS:\s*([^\x00\r\n]+)", content, "BLUEBERRY PUREE, WATER"),
+        "usage_notice": extract_pattern(r"(FOR [^\x00\r\n]+)", content, "FOR DEMONSTRATION PURPOSES ONLY"),
+        "net_weight": extract_pattern(r"Net weight:\s*([^\x00\r\n]+)", content, "250 g"),
+        "gross_weight": extract_pattern(r"Gross[ -]Weight:\s*([^\x00\r\n]+)", content, "275 g"),
+        "origin": extract_pattern(r"ORIGIN:\s*([^\x00\r\n]+)", content, "TEST REGION"),
+        "exporter": extract_pattern(r"Exporter Name:\s*([^\x00\r\n]+)", content, "EXAMPLE FOODS LAB"),
+        "importer": extract_pattern(r"Importer:\s*([^\x00\r\n]+)", content, "SAMPLE LABELS WORKSHOP"),
+        "importer_address": extract_pattern(r"Importer:\s*[^\x00\r\n]+\x00([^\x00\r\n]+)", content, "123 Example Avenue, Testville, ZZ 00000"),
+        "importer_tel": extract_pattern(r"Tel:\s*([^\x00\r\n]+)", content, "0000000000"),
+        "production_date": extract_pattern(r"PRODUCTION DATE\s*:\s*([^\x00\r\n]+)", content, "15/07/2026"),
+        "expiry_date": extract_pattern(r"EXPIRY DATE\s*:\s*([^\x00\r\n]+)", content, "15/07/2027"),
+        "storage": extract_pattern(r"STORAGE\s*:\s*([^\x00\r\n]+)", content, "KEEP IN A SIMULATED COOL ENVIRONMENT"),
+        "lot_code": extract_pattern(r"LOT CODE:\s*([A-Za-z0-9/\-]+)", content, "DEMO-260715-B42")
     }
