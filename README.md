@@ -1,10 +1,3 @@
-Here is a full, enterprise-grade, and comprehensive `README.md` designed for your GitHub repository. It includes badges, a table of contents, technical deep dives into binary parsing and vector rendering, system installation guides (Linux/macOS/Windows), CLI & Python API usage, pipeline diagrams, synthetic data generation, and troubleshooting steps.
-
----
-
-### File to create/update: `README.md`
-
-```markdown
 <div align="center">
 
 # 🏷️ BarTender (`.btw`) to PDF Engine & Label Converter
