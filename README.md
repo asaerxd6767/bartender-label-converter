@@ -151,7 +151,22 @@ brew install cairo pango gdk-pixbuf libffi
 
 
 * **Windows:**
-Install Python 3.8+ and ensure `pip` is configured. `WeasyPrint` includes required DLL binaries via `MSYS2` or GTK3 runtime installers if needed.
+Install Python 3.8+ and ensure `pip` is configured. `WeasyPrint` also needs native rendering libraries on Windows.
+
+Install [MSYS2](https://www.msys2.org/), then open the MSYS2 shell and run:
+```bash
+pacman -S mingw-w64-x86_64-pango
+```
+
+In PowerShell, point WeasyPrint at the MSYS2 DLL directory before running the converter:
+```powershell
+$env:WEASYPRINT_DLL_DIRECTORIES="C:\msys64\mingw64\bin"
+```
+
+Verify the setup:
+```powershell
+.\.venv\Scripts\python.exe -m weasyprint --info
+```
 
 ---
 
@@ -304,7 +319,7 @@ This guarantees that when the PDF is sent to thermal label printers (Zebra, TSPL
 #### Issue 1: `OSError: cannot load library 'gobject-2.0-0'`
 
 * **Cause:** Missing system-level libraries for `WeasyPrint`.
-* **Fix:** Install `cairo`, `pango`, and `gdk-pixbuf` using your system package manager (`apt-get` on Ubuntu or `brew` on macOS) as shown in [Installation & System Dependencies](https://www.google.com/search?q=%23-installation--system-dependencies).
+* **Fix:** Install `cairo`, `pango`, and `gdk-pixbuf` using your system package manager (`apt-get` on Ubuntu or `brew` on macOS). On Windows, install MSYS2 and run `pacman -S mingw-w64-x86_64-pango`, then set `WEASYPRINT_DLL_DIRECTORIES` to `C:\msys64\mingw64\bin`.
 
 #### Issue 2: Text misalignment on thermal print previews
 

@@ -21,7 +21,12 @@ def main():
     html_path = args.output.replace(".pdf", ".html") if args.html else None
 
     print("[+] Rendering PDF Label...")
-    generate_label_pdf(parsed_data, args.output, html_path)
+    try:
+        generate_label_pdf(parsed_data, args.output, html_path)
+    except RuntimeError as exc:
+        print(f"[-] Error: {exc}")
+        return
+
     print(f"[✔] Successfully generated label: {args.output}")
 
 if __name__ == "__main__":
