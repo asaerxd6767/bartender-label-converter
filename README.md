@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
 
 # 🏷️ BarTender (`.btw`) to PDF Engine & Label Converter
